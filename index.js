@@ -20,7 +20,7 @@ const initializeDbAndServer = (retryCount = 0) => {
   console.log("Connecting to the database...");
   db.connect((err) => {
     if (err) {
-      console.log(`DATABASE ERROR: ${err}`);
+      console.log(`DATABASE ERROR: ${err.message}`);
       if (retryCount < maxRetryAttempts) {
         console.log(`Retrying connection... (Attempt ${retryCount + 1})`);
         setTimeout(() => initializeDbAndServer(retryCount + 1), retryInterval);
